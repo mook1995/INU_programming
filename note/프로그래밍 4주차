@@ -1,0 +1,231 @@
+1.반복문
+        -for문
+              :처음부터 반복 횟수를 알수 있는 경우
+
+              -for(초기작업; true; 반복후작업) {//
+              반복조건이 true이면 무한반복한다
+              }
+
+              -for(초기작업;;반복후작업) {//
+              반복조건이 비어있으면 true로 간주, 무한반복한다.
+              }
+
+              -for(i=0, j=1; i<10 and j <10; i++, j++) {//
+              위와 같은 형태로 ','로 구분하여 초기작업과 반복후 작업을 여러개
+              써주는게 가능하다.
+              }
+
+              -for(int i=0; i<10; i++) {
+              변수 i는 for문 내의 지역변수
+              }
+
+
+
+
+        -while문
+              :반복 조건을 처음부터 따지는 경우
+               조건식이 업으면 컴파일오류가 난다.
+
+              -while (조건식) {
+                ...작업문....
+              }
+
+              -조건식에 사용되는 변수를 while문 실행전에 초기화해야 한다.
+
+        -do while문
+              :반복 조건을 나중에 따지는 경우
+
+              -do {
+              ....작업문 ...
+              } while(조건식);
+
+               여기서 작업문을 일단 실행한 후 조건식을 검사한다.
+
+
+2.continue문
+        :반복문을 빠져 나가지 않으면서 다음 반복으로 진행한다.
+
+        -for(초기문; 조건식; 반복 후작업) {
+          continue; -----> 반복 후 작업으로 분기(이동)
+        }
+
+        -while(조건식) {
+        continue; ----->조건식으로 분기
+        }
+
+        -do {
+          continue; ---->조건식으로 분기
+        } (조건식)
+
+
+3.break문
+        :반복문 하나(현재의 반복문)만을 빠져나간다.
+
+
+4.조건식 - 문자열 비교 String.equals("문자열 ")
+
+
+5. 배열
+        :배열인덱스는 0부터 시작
+
+        -배열 선언
+          int intArray[];   또는    int[] intArray;
+          char charArray[];   또는   char[] charArray
+
+          --선언시 배열의 크기를 지정하면 컴파일 오류다
+           (X) int intArray[10];
+           배열 크기는 생성시에 지정해야 한다.
+
+        -배열 생성
+          intArray = new int[10];  또는   int intArray[] = new int[10];
+          charArray = new char[10];  또는   char charArray[] = new char[10];
+
+
+        -배열 초기화
+             int intArray[] = {0,1,2,3,4,5,6,7,8,9};
+              -배열선언시와 마찬가지로 ....
+                  int intArray[5] = {1,2,3,4,5} // 배열의 크기를 지정하면 에러다.
+                               초기화 하는 값에 따라 자동으로 크기를 잡는다.
+
+
+        -레퍼런스 변수와 배열
+              -선언하기   ==  레퍼런스 변수에 배열의 주솟값할당
+              int intArray [];
+              배열타입 배열에대한레퍼런스변수 배열선언
+              int     intArray              []
+
+              -생성하기   ==  메모리에 배열크기만큼 배열공간을 할당받는다.
+              intArray = new int[10];
+              배열에대한레퍼런스변수 = 배열생성 타입 원소개수
+              intArray             = new     int  [5]
+
+
+          -배열의 인덱스
+           인덱스로 음수를 사용해서는 안된다.
+           <파이썬과의 차이점>
+
+
+          -레퍼런스 치환과 배열 공유
+            int intArray[] = new int[5];
+            int myArray[] = intArray;
+            선언부         = 생성부
+            레퍼런스 치환, myArray는 intArray와 동일한 배열이 된다.
+
+          -배열의 크기, length 필드
+                  배열은 자바에서 객체로 관리되며
+                  배열 객체 내에 length 필드는 배열의 크기를 나타낸다.
+
+                  int intArray[];
+                  int Array = new int[5];
+
+                  int size = intArray.length;
+
+
+            -2차원배열선언
+                int intArray[][];
+                또는 int[][] intArray;
+
+            -2차원배열생성
+                intArray = new int[2][5];
+                  2행 5열짜리 배열생성
+
+            -2차원배열초기화
+                int intArray[][] = {{0,1,2},{1,2,3}}
+                    2행 3열짜리 배열 생성하고 초기화하기
+
+            -2차원배열의 모양과 length 필드
+                int i[][] = new int[2][5];
+                int row_size = i.length; //2
+                int row0_column_size = i[0].length; //5
+                int row1_column_size = i[1].length; //5
+                .
+                .
+                .
+                .
+                .
+
+6.비정방배열
+              -정방형배열 : 각 행의 열의 개수가 같은 배열이다.
+                 int i[][];
+                 i = new int[4][4];
+
+              -비정방형배열 : 각 행의 열의 개수가 다른 배열
+                 int i[][];
+                 i = new int[4][];
+
+                 i[0] = new int[3];
+                 i[1] = new int[1];
+                 i[2] = new int[4];
+                 i[3] = new int[2];
+
+
+7.메소드에서 배열 리턴
+              -리턴형이 int[]인 makeArray(매개변수 없음)메서드를 생성
+              int[] makeArray() {
+                  int temp[] = new int[4];
+                  return temp;
+              }
+
+
+8.main() 메소드
+              main() 은 자바 응용프로그램의 실행 시작 메소드이다.
+
+              public : 다른 클래스에서 메소드 접근 허용한다.
+              static : 클래스 객체 생성 전부터 호출이 가능하다.
+              void : 리턴값이 없다.
+              String[] : 문자열 배열
+              args : 매개변수
+              (String[] args) : 매개변수 타입은 문자열배열로 한다.
+
+              -main(String[] args) 메소드의 인자전달
+                    C:\> java Hello abc 3 5.7
+                    ------------------> 생성,초기화(문자열'abc','3','5.7')
+
+9.자바의 예외처리
+           -컴파일 오류: 문법에 맞지 않게 작성된 코드
+                            컴파일 할떄 발견된다.
+
+           -예외(Exception) :
+                            오동작이나 결과에 악영향을 미칠 수 있는 실행  발생한
+                            오류를 말한다.
+                              ex. 정수를 0으로 나누거나
+                                  배열보다 큰 인덱스로 배열의 원소를 접근하는 경우나
+                                  존재하지 않는 파일을 읽으려고 하는 경우
+                                  정수 입력을 기다리는 코드가 실행되고 있을때
+                                  문자가 입력되는 경우
+           -자바에서 예외처리 기능
+                예외발생 -> 자바플랫폼인지 -> 응용프로그램에서 전달
+                <응용프로그램이 예외를 처리하지 않으면 응용프로그램 강제 종료함>
+
+
+           -예외처리, try-catch-finally문
+                try {
+                  예외가 발생할 가능성이 있는 실행문(try블록)
+                }
+                catch(처리할 예외 타입 선언) {
+                  예외처리문(catch블록)
+                }
+                finally {
+                  예외 발생 여부와 상관없이 무조건 실행되는 문장 (finally블록)
+                  finally블록은 생략해도 된다.
+                }
+
+            -예외처리 흐름
+                  1.try블록에서 실행한다 -> 예외발생
+                  2.catch블록에서 예외를 처리한다.
+
+                  1.try블록에서 실행한다 -> 예외발생하지 않음
+                  2.finally블록으로 빠저나간다.
+
+            -자주발생하는 예외
+                   <예외타입(예외클래스)> : 예외발생하는 경우            : 패키지
+                  1.ArithmeticException : 정수를 0으로 나눌떄 발생  :   jave.lang
+                  2.NullPointerException: null레퍼런스를 참조할떄 발생 : java.lang
+                  3.ClassCastException :변환할 수 없는 타입으로 객체를 변환할 떄 발생 : java.lang
+                  4.OutOfMemoryError   :메모리가 부족한 경우 발생           :java.lang
+                  5.ArrayIndexOutOfBoundsException :배열의 범위를 벗어난 접근시 발생 : java.lang
+                  6.IllegalArgumentException :잘못된 인자 전달 시 발생 : java.lang
+                  7.IOException     :입출력 동작 실패 또는 인터럽트 시 발생 :java.io
+                  8.NumberFormatException :문자열이 나타내는 숫자와 일치하지 않는 타입의 숫자로 변환시 발생한다. :java.lang
+                  9.InputMismatchException :Scanner 클래스의 nextInt()를 호출하여 정수로
+                                             입력받고자 했지만, 사용자가'a' 등과 같이 문자를 입력한경우 발생 :java.util
